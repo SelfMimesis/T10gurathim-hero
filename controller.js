@@ -11,7 +11,7 @@ const websocketRoom = document.querySelector("#websocket-room");
 const roomLabel = document.querySelector("#room-label");
 const displayStatus = document.querySelector("#display-status");
 const lastSignal = document.querySelector("#last-signal");
-const sequenceCount = document.querySelector("#sequence-count");
+const versionCount = document.querySelector("#version-count");
 const terminalModule = document.querySelector(".terminal-module");
 const terminalReadout = document.querySelector("#terminal-readout");
 const terminalOpenButton = document.querySelector("#terminal-open");
@@ -31,9 +31,12 @@ const controllerFlash = document.querySelector("#controller-flash");
 const liveRegion = document.querySelector("#live-region");
 
 let remoteConfiguration = resolveRemoteConfig("controller");
-let sequence = 0;
 let brightnessFrame = 0;
 let remoteStateReceived = false;
+
+const VERSION_FALLBACK = 6;
+const COMMITS_ENDPOINT =
+  "https://api.github.com/repos/SelfMimesis/T10gurathim-hero/commits?sha=main&per_page=1";
 
 const state = {
   terminalOpen: false,
@@ -69,9 +72,34 @@ function addSignal(text, tone = "default") {
   lastSignal.textContent = time.textContent;
 }
 
-function updateSequence() {
-  sequence += 1;
-  sequenceCount.textContent = String(sequence).padStart(4, "0");
+function renderVersion(value) {
+  const normalized = Math.max(1, Math.floor(Number(value) || VERSION_FALLBACK));
+  versionCount.textContent = String(normalized).padStart(4, "0");
+}
+
+async function syncVersion() {
+  renderVersion(VERSION_FALLBACK);
+
+  try {
+    const response = await fetch(COMMITS_ENDPOINT, {
+      cache: "no-store",
+      headers: { Accept: "application/vnd.github+json" },
+    });
+    if (!response.ok) throw new Error(`GitHub ${response.status}`);
+
+    const lastPage = response.headers
+      .get("Link")
+      ?.match(/[?&]page=(\d+)>;\s*rel="last"/)?.[1];
+    if (lastPage) {
+      renderVersion(lastPage);
+      return;
+    }
+
+    const commits = await response.json();
+    renderVersion(Array.isArray(commits) ? commits.length : VERSION_FALLBACK);
+  } catch {
+    // The embedded version remains available when GitHub cannot be reached.
+  }
 }
 
 function haptic(pattern = 22) {
@@ -127,7 +155,6 @@ function renderState() {
 
 function sendCommand(message, value, button, logText, options = {}) {
   bridge.send(message, value, { target: "display" });
-  updateSequence();
   addSignal(`${message} // ${logText}`, options.tone);
   fireControl(button, options.color);
   haptic(options.haptic ?? 24);
@@ -166,7 +193,6 @@ brightnessSlider.addEventListener("input", () => {
 });
 
 brightnessSlider.addEventListener("change", () => {
-  updateSequence();
   addSignal(`display.brightness // ${state.brightness}%`);
   haptic(14);
 });
@@ -280,6 +306,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 renderState();
+syncVersion();
 roomLabel.textContent = remoteConfiguration.room.toUpperCase();
 websocketUrl.value = remoteConfiguration.endpoint;
 websocketRoom.value = remoteConfiguration.room;
