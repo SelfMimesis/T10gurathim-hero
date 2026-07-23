@@ -99,6 +99,7 @@ input[type="range"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   min-height: 92px;
   padding: 16px 18px 16px 22px;
   clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
@@ -106,22 +107,25 @@ input[type="range"] {
 
 .identity {
   display: flex;
+  flex: 1 1 0;
   align-items: center;
   gap: 16px;
+  min-width: 0;
+}
+
+.identity > div {
+  min-width: 0;
 }
 
 .identity-mark {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
+  flex: 0 0 auto;
   overflow: visible;
-  fill: none;
-  stroke: var(--cyan);
-  stroke-width: 2;
-  filter: drop-shadow(0 0 8px rgba(81, 203, 249, 0.35));
-}
-
-.identity-mark path:last-child {
-  fill: rgba(114, 223, 255, 0.14);
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 8px rgba(81, 203, 249, 0.38))
+    drop-shadow(0 0 18px rgba(108, 91, 204, 0.18));
 }
 
 .eyebrow,
@@ -146,11 +150,15 @@ input[type="range"] {
 }
 
 .identity h1 {
-  font-size: clamp(20px, 3vw, 30px);
+  max-width: min(66vw, 760px);
+  font-size: clamp(17px, 2.2vw, 27px);
+  line-height: 1.14;
+  text-wrap: balance;
 }
 
 .connection-toggle {
   display: grid;
+  flex: 0 0 auto;
   grid-template-columns: auto 1fr auto;
   align-items: center;
   min-width: 210px;
@@ -1085,9 +1093,14 @@ input[type="range"] {
   }
 
   .identity-mark {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     flex: 0 0 auto;
+  }
+
+  .identity h1 {
+    max-width: none;
+    font-size: clamp(14px, 3.35vw, 19px);
   }
 
   .identity .eyebrow {
@@ -1184,20 +1197,23 @@ input[type="range"] {
 
   .identity {
     min-width: 0;
+    max-width: calc(100% - 58px);
     gap: 9px;
   }
 
   .identity-mark {
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
   }
 
   .identity h1 {
-    overflow: hidden;
-    max-width: 190px;
-    font-size: 16px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    max-width: none;
+    font-size: clamp(10px, 3.25vw, 13px);
+    line-height: 1.18;
+    overflow-wrap: normal;
+    text-overflow: clip;
+    white-space: normal;
   }
 
   .connection-toggle {

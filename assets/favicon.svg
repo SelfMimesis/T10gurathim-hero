@@ -1,6 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <path fill="#071018" d="M11 3h42l8 8v42l-8 8H11l-8-8V11z"/>
-  <path fill="none" stroke="#86ddff" stroke-width="3" d="M14 13h36l4 4v30l-7 7H17l-7-7V17z"/>
-  <path fill="#b9edff" d="M17 19h30v7H36v23h-8V26H17z"/>
-  <path fill="#8585d8" d="M38 30h9v7h-9z"/>
+  <defs>
+    <linearGradient id="signal" x1="10" y1="8" x2="54" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c8f5ff"/>
+      <stop offset=".42" stop-color="#72dfff"/>
+      <stop offset="1" stop-color="#9b81f2"/>
+    </linearGradient>
+  </defs>
+  <path fill="#061019" d="M9 2h46l7 7v46l-7 7H9l-7-7V9z"/>
+  <path fill="none" stroke="#233f51" d="M11 5h42l6 6v42l-6 6H11l-6-6V11z"/>
+  <g fill="none" stroke="#02070b" stroke-linecap="square" stroke-linejoin="miter" stroke-width="7">
+    <path d="m32 10 22 22-22 22L10 32Z"/>
+    <path d="m21 21 22 22m0-22L21 43"/>
+    <path d="M21 21 12 12H5M43 21l9-9h7M43 43l9 9h7M21 43l-9 9H5"/>
+  </g>
+  <g fill="none" stroke="url(#signal)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="3.4">
+    <path d="m32 10 22 22-22 22L10 32Z"/>
+    <path d="m21 21 22 22m0-22L21 43"/>
+    <path d="M21 21 12 12H5M43 21l9-9h7M43 43l9 9h7M21 43l-9 9H5"/>
+  </g>
+  <path fill="#08151f" stroke="#c8f5ff" stroke-width="1.4" d="m32 25 7 7-7 7-7-7z"/>
+  <circle cx="32" cy="32" r="2.2" fill="#d5f8ff"/>
 </svg>

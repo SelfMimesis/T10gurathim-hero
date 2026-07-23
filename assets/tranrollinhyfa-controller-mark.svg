@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title id="title">Tranrollinhyfa embarkation emblem</title>
+  <desc id="desc">Symmetrical angular embarkation emblem adapted in cyan and violet.</desc>
+  <defs>
+    <linearGradient id="signal" x1="24" y1="20" x2="176" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c8f5ff"/>
+      <stop offset=".32" stop-color="#72dfff"/>
+      <stop offset=".68" stop-color="#568ec8"/>
+      <stop offset="1" stop-color="#a68cff"/>
+    </linearGradient>
+    <linearGradient id="core" x1="62" y1="58" x2="140" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78e8ff"/>
+      <stop offset=".5" stop-color="#d1f7ff"/>
+      <stop offset="1" stop-color="#9b81f2"/>
+    </linearGradient>
+    <radialGradient id="coreFill">
+      <stop stop-color="#76dcff" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#7568cc" stop-opacity=".05"/>
+    </radialGradient>
+    <filter id="glow" x="-35%" y="-35%" width="170%" height="170%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feColorMatrix in="blur" values="0 0 0 0 0.24 0 0 0 0 0.74 0 0 0 0 1 0 0 0 .72 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="#02080d" stroke-linecap="square" stroke-linejoin="miter" stroke-width="15">
+    <path d="M100 31 169 100 100 169 31 100Z"/>
+    <path d="m67 67 66 66M133 67l-66 66"/>
+    <path d="M67 67 43 43H26L10 27M83 51 58 26V10L45-3M51 83 26 58H10L-3 45"/>
+    <path d="M133 67 157 43h17l16-16M117 51l25-25V10l13-13M149 83l25-25h16l13-13"/>
+    <path d="m133 133 24 24h17l16 16M117 149l25 25v16l13 13M149 117l25 25h16l13 13"/>
+    <path d="m67 133-24 24H26l-16 16M83 149l-25 25v16l-13 13M51 117l-25 25H10l-13 13"/>
+  </g>
+
+  <g fill="none" stroke="url(#signal)" stroke-linecap="square" stroke-linejoin="miter" stroke-width="8" filter="url(#glow)">
+    <path d="M100 31 169 100 100 169 31 100Z"/>
+    <path d="m67 67 66 66M133 67l-66 66"/>
+    <path d="M67 67 43 43H26L10 27M83 51 58 26V10L45-3M51 83 26 58H10L-3 45"/>
+    <path d="M133 67 157 43h17l16-16M117 51l25-25V10l13-13M149 83l25-25h16l13-13"/>
+    <path d="m133 133 24 24h17l16 16M117 149l25 25v16l13 13M149 117l25 25h16l13 13"/>
+    <path d="m67 133-24 24H26l-16 16M83 149l-25 25v16l-13 13M51 117l-25 25H10l-13 13"/>
+  </g>
+
+  <path d="M100 66 134 100 100 134 66 100Z" fill="url(#coreFill)" stroke="url(#core)" stroke-width="3"/>
+  <path d="M100 82 118 100 100 118 82 100Z" fill="#06141d" stroke="#c8f5ff" stroke-width="2"/>
+  <circle cx="100" cy="100" r="4.5" fill="#d4f8ff"/>
+</svg>
