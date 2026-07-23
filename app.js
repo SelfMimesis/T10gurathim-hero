@@ -346,7 +346,7 @@ function createKeyAura(control, hue) {
   }
 
   aura.addEventListener("animationend", () => aura.remove(), { once: true });
-  window.setTimeout(() => aura.remove(), extremeMode ? 1900 : 1600);
+  window.setTimeout(() => aura.remove(), extremeMode ? 1200 : 1050);
 }
 
 function pulseInterface(hue) {

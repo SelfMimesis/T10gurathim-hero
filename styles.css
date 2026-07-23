@@ -99,11 +99,14 @@ button {
 }
 
 .brightness-overlay {
-  z-index: 2;
+  z-index: 40;
   pointer-events: none;
   background: #000;
+  mix-blend-mode: normal;
   opacity: 0;
+  transform: translateZ(0);
   transition: opacity 180ms linear;
+  will-change: opacity;
 }
 
 .extreme-atmosphere {
@@ -623,24 +626,25 @@ button {
 
 .svg-mount .key-aura {
   --aura-hue: 197;
-  fill: hsla(var(--aura-hue) 100% 72% / 0.7) !important;
-  stroke: hsla(var(--aura-hue) 100% 92% / 0.96) !important;
-  stroke-width: 4;
+  fill: hsla(var(--aura-hue) 100% 72% / 0.22) !important;
+  stroke: hsla(var(--aura-hue) 100% 92% / 0.46) !important;
+  stroke-width: 2;
   vector-effect: non-scaling-stroke;
   pointer-events: none;
   transform-box: fill-box;
   transform-origin: center;
   filter:
-    drop-shadow(0 0 0.36cqw hsla(var(--aura-hue) 100% 82% / 0.95))
-    drop-shadow(0 0 1.15cqw hsla(var(--aura-hue) 100% 61% / 0.62));
-  animation: key-aura-fade 1.45s cubic-bezier(0.12, 0.68, 0.18, 1) forwards;
+    drop-shadow(0 0 0.18cqw hsla(var(--aura-hue) 100% 82% / 0.32))
+    drop-shadow(0 0 0.42cqw hsla(var(--aura-hue) 100% 61% / 0.16));
+  animation: key-aura-fade 900ms cubic-bezier(0.12, 0.68, 0.18, 1) forwards;
   will-change: opacity, transform;
 }
 
 .stage.extreme-mode .svg-mount .key-aura {
-  fill: hsla(var(--aura-hue) 100% 72% / 0.88) !important;
-  stroke-width: 6;
-  animation-duration: 1.75s;
+  fill: hsla(var(--aura-hue) 100% 72% / 0.34) !important;
+  stroke: hsla(var(--aura-hue) 100% 92% / 0.62) !important;
+  stroke-width: 3;
+  animation-duration: 1.05s;
 }
 
 .svg-mount #UI_Line,
@@ -722,15 +726,15 @@ button {
 .cyber-ripple {
   --ripple-hue: 197;
   position: absolute;
-  width: 2.2cqw;
-  height: 2.2cqw;
-  margin: -1.1cqw 0 0 -1.1cqw;
-  border: 0.1cqw solid hsla(var(--ripple-hue) 100% 80% / 0.95);
+  width: 1.15cqw;
+  height: 1.15cqw;
+  margin: -0.575cqw 0 0 -0.575cqw;
+  border: 0.055cqw solid hsla(var(--ripple-hue) 100% 80% / 0.38);
   border-radius: 50%;
   box-shadow:
-    0 0 0.45cqw hsla(var(--ripple-hue) 100% 74% / 0.9),
-    inset 0 0 0.45cqw hsla(var(--ripple-hue) 100% 74% / 0.7);
-  animation: ripple-out 720ms cubic-bezier(0.15, 0.7, 0.2, 1) forwards;
+    0 0 0.2cqw hsla(var(--ripple-hue) 100% 74% / 0.28),
+    inset 0 0 0.14cqw hsla(var(--ripple-hue) 100% 74% / 0.18);
+  animation: ripple-out 460ms cubic-bezier(0.15, 0.7, 0.2, 1) forwards;
   will-change: opacity, transform;
 }
 
@@ -740,19 +744,19 @@ button {
   position: absolute;
   left: 50%;
   top: 50%;
-  background: hsla(var(--ripple-hue) 100% 82% / 0.9);
-  box-shadow: 0 0 0.7cqw hsla(var(--ripple-hue) 100% 70% / 0.8);
+  background: hsla(var(--ripple-hue) 100% 82% / 0.28);
+  box-shadow: 0 0 0.22cqw hsla(var(--ripple-hue) 100% 70% / 0.24);
   transform: translate(-50%, -50%);
 }
 
 .cyber-ripple::before {
-  width: 9cqw;
-  height: 0.05cqw;
+  width: 2.2cqw;
+  height: 0.035cqw;
 }
 
 .cyber-ripple::after {
-  width: 0.05cqw;
-  height: 9cqw;
+  width: 0.035cqw;
+  height: 2.2cqw;
 }
 
 .glitch-slice {
@@ -760,23 +764,23 @@ button {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 0.18cqw;
-  background: linear-gradient(90deg, transparent, hsla(var(--slice-hue) 100% 73% / 0.8), transparent);
-  box-shadow: 0 0 0.8cqw hsla(var(--slice-hue) 100% 66% / 0.55);
-  animation: slice-flash 520ms cubic-bezier(0.16, 0.72, 0.2, 1) forwards;
+  height: 0.08cqw;
+  background: linear-gradient(90deg, transparent, hsla(var(--slice-hue) 100% 73% / 0.24), transparent);
+  box-shadow: 0 0 0.3cqw hsla(var(--slice-hue) 100% 66% / 0.16);
+  animation: slice-flash 360ms cubic-bezier(0.16, 0.72, 0.2, 1) forwards;
   will-change: opacity, transform;
 }
 
 .stage.extreme-mode .cyber-ripple {
-  border-width: 0.18cqw;
-  filter: saturate(1.8) brightness(1.35);
-  animation-duration: 430ms;
+  border-width: 0.08cqw;
+  filter: saturate(1.25) brightness(1.05);
+  animation-duration: 380ms;
 }
 
 .stage.extreme-mode .glitch-slice {
-  height: 0.34cqw;
-  animation-duration: 300ms;
-  filter: saturate(2) brightness(1.45);
+  height: 0.12cqw;
+  animation-duration: 280ms;
+  filter: saturate(1.3) brightness(1.08);
 }
 
 .door-access-popup {
@@ -1086,30 +1090,30 @@ button {
 }
 
 @keyframes ripple-out {
-  0% { opacity: 1; transform: scale(0.28) rotate(0deg); }
-  62% { opacity: 0.78; }
-  100% { opacity: 0; transform: scale(10) rotate(90deg); }
+  0% { opacity: 0.46; transform: scale(0.45) rotate(0deg); }
+  58% { opacity: 0.22; }
+  100% { opacity: 0; transform: scale(2.7) rotate(45deg); }
 }
 
 @keyframes key-aura-fade {
   0% {
-    opacity: 0.96;
-    transform: translateZ(0) scale(0.965);
+    opacity: 0.44;
+    transform: translateZ(0) scale(0.985);
   }
   18% {
-    opacity: 0.82;
+    opacity: 0.3;
     transform: translateZ(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateZ(0) scale(1.085);
+    transform: translateZ(0) scale(1.035);
   }
 }
 
 @keyframes slice-flash {
   0% { opacity: 0; transform: translateX(-35%) scaleX(0.2); }
-  20% { opacity: 1; }
-  75% { opacity: 0.65; }
+  20% { opacity: 0.34; }
+  75% { opacity: 0.14; }
   100% { opacity: 0; transform: translateX(35%) scaleX(1.1); }
 }
 
