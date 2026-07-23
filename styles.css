@@ -64,6 +64,7 @@ button {
 .screen-treatment,
 .brightness-overlay,
 .extreme-atmosphere,
+.typing-signal-bars,
 .svg-mount,
 .effects-layer {
   position: absolute;
@@ -121,6 +122,114 @@ button {
   transition: opacity 260ms ease;
   transform: translateZ(0);
   will-change: opacity, transform;
+}
+
+.typing-signal-bars {
+  z-index: 6;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  contain: paint;
+}
+
+.typing-signal-bar {
+  position: absolute;
+  left: 2.22%;
+  width: 12.48%;
+  height: 0.84%;
+  overflow: hidden;
+  border-radius: 0.05cqw;
+  background: rgba(3, 13, 19, 0.35);
+  box-shadow: inset 0 0 0.26cqw rgba(0, 0, 0, 0.86);
+  opacity: 0;
+  transform: translateZ(0);
+  transition: opacity 140ms ease;
+}
+
+.typing-signal-bar--upper {
+  top: 63.96%;
+}
+
+.typing-signal-bar--lower {
+  top: 69.38%;
+}
+
+.typing-signal-bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 46%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(68, 187, 232, 0.32) 18%,
+      rgba(119, 224, 255, 0.9) 70%,
+      rgba(221, 249, 255, 0.96) 91%,
+      transparent
+    );
+  box-shadow:
+    0 0 0.28cqw rgba(90, 215, 255, 0.72),
+    0 0 0.62cqw rgba(82, 174, 238, 0.34);
+  transform: translate3d(-112%, 0, 0);
+  will-change: transform;
+}
+
+.typing-signal-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 0.52cqw,
+      rgba(184, 235, 253, 0.22) 0.54cqw 0.58cqw
+    );
+  opacity: 0;
+}
+
+.typing-signal-bars.is-typing .typing-signal-bar {
+  opacity: 0.92;
+}
+
+.typing-signal-bars.is-typing .typing-signal-bar::before {
+  animation: typing-signal-sweep 620ms linear infinite;
+}
+
+.typing-signal-bars.is-typing .typing-signal-bar::after {
+  opacity: 0.7;
+  animation: typing-signal-grid 310ms steps(2, end) infinite alternate;
+}
+
+.typing-signal-bars.is-typing .typing-signal-bar--lower::before {
+  animation-delay: -310ms;
+  animation-direction: reverse;
+}
+
+.stage.extreme-mode .typing-signal-bars.is-typing .typing-signal-bar {
+  opacity: 1;
+  box-shadow:
+    inset 0 0 0.28cqw rgba(0, 0, 0, 0.82),
+    0 0 0.42cqw rgba(92, 211, 255, 0.38);
+}
+
+.stage.extreme-mode .typing-signal-bar::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(79, 207, 255, 0.48) 14%,
+      rgba(164, 111, 255, 0.82) 58%,
+      #fff3a0 88%,
+      #ff9f21 96%,
+      transparent
+    );
+  box-shadow:
+    0 0 0.34cqw rgba(255, 236, 133, 0.9),
+    0 0 0.72cqw rgba(255, 137, 28, 0.48);
+}
+
+.stage.extreme-mode .typing-signal-bars.is-typing .typing-signal-bar::before {
+  animation-duration: 235ms;
 }
 
 .terminal {
@@ -1075,6 +1184,17 @@ button {
 @keyframes glyph-rain-fall {
   from { transform: translate3d(var(--rain-drift), -120%, 0); }
   to { transform: translate3d(calc(var(--rain-drift) * -1), 88%, 0); }
+}
+
+@keyframes typing-signal-sweep {
+  0% { transform: translate3d(-112%, 0, 0) scaleX(0.62); }
+  48% { transform: translate3d(72%, 0, 0) scaleX(1.18); }
+  100% { transform: translate3d(224%, 0, 0) scaleX(0.7); }
+}
+
+@keyframes typing-signal-grid {
+  from { opacity: 0.22; transform: translate3d(-0.12cqw, 0, 0); }
+  to { opacity: 0.62; transform: translate3d(0.12cqw, 0, 0); }
 }
 
 @keyframes log-in {

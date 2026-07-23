@@ -20,6 +20,7 @@ const doorAccessPopup = document.querySelector("#door-access-popup");
 const telemetryLatency = document.querySelector("#telemetry-latency");
 const telemetryEntropy = document.querySelector("#telemetry-entropy");
 const packetRate = document.querySelector("#packet-rate");
+const typingSignalBars = document.querySelector("#typing-signal-bars");
 
 video.src = resolveVideoUrl();
 video.addEventListener(
@@ -80,6 +81,7 @@ let audioContext;
 let auraGroup;
 let glyphRainResizeFrame = 0;
 let glyphRainBurstTimer = 0;
+let typingBarsTimer = 0;
 let extremeMode = false;
 let currentBrightness = 100;
 let accessVisible = false;
@@ -233,7 +235,9 @@ function showAccessPopup(value = {}, options = {}) {
 
 function typeCommand(command) {
   window.cancelAnimationFrame(commandAnimation);
+  window.clearTimeout(typingBarsTimer);
   typedCommand.textContent = "";
+  typingSignalBars.classList.toggle("is-typing", !reducedMotion);
 
   if (reducedMotion) {
     typedCommand.textContent = command;
@@ -251,6 +255,11 @@ function typeCommand(command) {
     }
     if (index < command.length) {
       commandAnimation = window.requestAnimationFrame(tick);
+    } else {
+      typingBarsTimer = window.setTimeout(
+        () => typingSignalBars.classList.remove("is-typing"),
+        extremeMode ? 420 : 220,
+      );
     }
   };
   commandAnimation = window.requestAnimationFrame(tick);
