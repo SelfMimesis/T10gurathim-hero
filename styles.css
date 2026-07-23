@@ -136,8 +136,8 @@ button {
   clip-path: polygon(0.45% 0, 99.55% 0, 100% 5%, 100% 95%, 99.55% 100%, 0.45% 100%, 0 95%, 0 5%);
   color: rgba(205, 235, 246, 0.88);
   background:
-    linear-gradient(105deg, rgba(4, 13, 20, 0.94), rgba(7, 28, 40, 0.88) 52%, rgba(7, 15, 26, 0.95)),
-    linear-gradient(180deg, rgba(152, 218, 242, 0.13), transparent 22%, rgba(1, 8, 14, 0.52));
+    linear-gradient(105deg, rgba(4, 13, 20, 0.82), rgba(7, 28, 40, 0.74) 52%, rgba(7, 15, 26, 0.84)),
+    linear-gradient(180deg, rgba(152, 218, 242, 0.1), transparent 22%, rgba(1, 8, 14, 0.34));
   box-shadow:
     inset 0 0 2.4cqw rgba(50, 170, 218, 0.16),
     inset 0 0 0 0.12cqw rgba(190, 230, 244, 0.035),
@@ -226,8 +226,8 @@ button {
     inset 0 0 0 0.12cqw rgba(226, 246, 255, 0.1),
     0 0 2.2cqw hsla(var(--pulse-hue) 100% 55% / 0.24);
   background:
-    linear-gradient(105deg, rgba(4, 16, 25, 0.98), rgba(6, 31, 45, 0.95) 52%, rgba(11, 14, 32, 0.98)),
-    linear-gradient(180deg, rgba(190, 233, 250, 0.16), transparent 22%, rgba(1, 8, 14, 0.58));
+    linear-gradient(105deg, rgba(4, 16, 25, 0.88), rgba(6, 31, 45, 0.83) 52%, rgba(11, 14, 32, 0.9)),
+    linear-gradient(180deg, rgba(190, 233, 250, 0.13), transparent 22%, rgba(1, 8, 14, 0.44));
 }
 
 .stage.extreme-mode .glyph-rain {
@@ -450,7 +450,7 @@ button {
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  background: linear-gradient(90deg, rgba(10, 31, 43, 0.3), transparent);
+  background: linear-gradient(90deg, rgba(10, 31, 43, 0.2), transparent);
 }
 
 .terminal-log {
