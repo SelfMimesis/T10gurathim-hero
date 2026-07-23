@@ -34,7 +34,7 @@ let remoteConfiguration = resolveRemoteConfig("controller");
 let brightnessFrame = 0;
 let remoteStateReceived = false;
 
-const VERSION_FALLBACK = 6;
+const VERSION_FALLBACK = 7;
 const COMMITS_ENDPOINT =
   "https://api.github.com/repos/SelfMimesis/T10gurathim-hero/commits?sha=main&per_page=1";
 

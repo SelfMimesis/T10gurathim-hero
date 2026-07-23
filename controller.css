@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Automatron";
+  src: url("./assets/automatron-numbersdec.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   color-scheme: dark;
   font-family: "Rajdhani", "Segoe UI", sans-serif;
@@ -137,6 +145,11 @@ input[type="range"] {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.18em;
+}
+
+.identity .eyebrow {
+  font-family: "Automatron", "Orbitron", sans-serif;
+  font-weight: 400;
 }
 
 .identity h1,
