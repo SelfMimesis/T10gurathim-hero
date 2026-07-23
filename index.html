@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#071018" />
+    <title>TRH · Station Gate Hack 02</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./assets/automatron-numbersdec.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="stage" class="stage" aria-label="Consola de acceso TRH">
+      <video
+        id="background-video"
+        class="background-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      ></video>
+
+      <div class="screen-treatment" aria-hidden="true"></div>
+      <div id="brightness-overlay" class="brightness-overlay" aria-hidden="true"></div>
+      <div class="extreme-atmosphere" aria-hidden="true"></div>
+
+      <section id="terminal" class="terminal is-closed" aria-label="Terminal de intrusión" aria-live="polite">
+        <div id="glyph-rain" class="glyph-rain" aria-hidden="true"></div>
+        <div class="terminal-scan" aria-hidden="true"></div>
+
+        <header class="terminal-header">
+          <span class="terminal-title">TRH // GATE SHELL</span>
+          <span id="terminal-state" class="terminal-state">STANDBY</span>
+          <span id="terminal-clock" class="terminal-clock">00:00:00:000</span>
+        </header>
+
+        <div class="terminal-body">
+          <div class="log-column">
+            <div id="terminal-log" class="terminal-log"></div>
+            <div class="command-line">
+              <span class="prompt">root@trh-02:~$</span>
+              <span id="typed-command" class="typed-command"></span><span class="cursor" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="download-column" aria-label="Procesos de transferencia">
+            <div class="download-heading">
+              <span>DATA TRANSFER</span>
+              <span id="packet-rate">0.00 TB/S</span>
+            </div>
+
+            <div class="download" data-task="cipher">
+              <div class="download-meta">
+                <span>CIPHER_MAP.BIN</span>
+                <span class="download-value">00%</span>
+              </div>
+              <div class="progress-track"><span class="progress-fill"></span></div>
+            </div>
+
+            <div class="download" data-task="handshake">
+              <div class="download-meta">
+                <span>GATE_HANDSHAKE.SYS</span>
+                <span class="download-value">00%</span>
+              </div>
+              <div class="progress-track"><span class="progress-fill"></span></div>
+            </div>
+
+            <div class="download" data-task="payload">
+              <div class="download-meta">
+                <span>VECTOR_PAYLOAD.DAT</span>
+                <span class="download-value">00%</span>
+              </div>
+              <div class="progress-track"><span class="progress-fill"></span></div>
+            </div>
+          </div>
+
+          <aside class="telemetry" aria-label="Telemetría">
+            <div><span>NODE</span><strong id="telemetry-node">TRH-02</strong></div>
+            <div><span>LATENCY</span><strong id="telemetry-latency">03.4 MS</strong></div>
+            <div><span>ENTROPY</span><strong id="telemetry-entropy">87.21%</strong></div>
+            <div><span>STATUS</span><strong id="telemetry-status">MASKED</strong></div>
+          </aside>
+        </div>
+      </section>
+
+      <div id="svg-mount" class="svg-mount" aria-label="Controles táctiles"></div>
+      <div id="effects-layer" class="effects-layer" aria-hidden="true"></div>
+
+      <section id="door-access-popup" class="door-access-popup" role="status" aria-hidden="true">
+        <div class="access-backplane" aria-hidden="true"></div>
+        <div class="access-symbol" aria-hidden="true">
+          <img src="./assets/door-gate-vector.svg" alt="" />
+          <span class="gate-scan"></span>
+        </div>
+        <div class="access-copy">
+          <span class="access-kicker">CLEARANCE // TRH-02</span>
+          <strong>ACCESS TO THE DOOR</strong>
+          <span class="access-subtitle">GATE AUTHORIZATION ACCEPTED</span>
+        </div>
+        <div class="access-progress" aria-hidden="true"><span></span></div>
+      </section>
+
+      <button
+        id="fullscreen-zone"
+        class="fullscreen-zone"
+        type="button"
+        aria-label="Activar pantalla completa"
+        title=""
+      ></button>
+
+      <div id="fullscreen-recovery" class="fullscreen-recovery" role="status">
+        Toca la esquina superior derecha para reactivar pantalla completa
+      </div>
+
+      <div id="loading-cover" class="loading-cover" aria-live="polite">
+        <span class="loading-mark">TRH</span>
+        <div class="loading-track"><span></span></div>
+        <span id="loading-label">INITIALIZING GATE INTERFACE</span>
+      </div>
+    </main>
+
+    <noscript>Esta interfaz necesita JavaScript para funcionar.</noscript>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

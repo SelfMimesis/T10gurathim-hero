@@ -1,0 +1,6 @@
+.kiosk-profile/
+node_modules/
+*.log
+video-frame.png
+video-inspect.html
+qa-*.png

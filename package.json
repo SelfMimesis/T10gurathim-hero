@@ -1,0 +1,13 @@
+{
+  "name": "trh-station-gate-hack-02",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "kiosk": "node scripts/kiosk.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.21.0"
+  }
+}
